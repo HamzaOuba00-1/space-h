@@ -1,0 +1,44 @@
+.prose-space {
+  line-height: 1.75;
+  font-size: 0.98rem;
+}
+
+.prose-space h1,
+.prose-space h2,
+.prose-space h3 {
+  margin: 1.2rem 0 0.6rem;
+  line-height: 1.2;
+}
+
+.prose-space h1 { font-size: 2rem; font-weight: 700; }
+.prose-space h2 { font-size: 1.5rem; font-weight: 650; }
+.prose-space h3 { font-size: 1.2rem; font-weight: 650; }
+
+.prose-space p { margin: 0.75rem 0; opacity: 0.92; }
+
+.prose-space a {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.prose-space ul {
+  margin: 0.6rem 0 0.6rem 1.25rem;
+}
+
+.prose-space li {
+  margin: 0.25rem 0;
+}
+
+.prose-space pre code {
+  display: block;
+  padding: 1rem;
+  overflow: auto;
+  border-radius: 1rem;
+  background: rgba(10, 10, 20, 0.08);
+  border: 1px solid rgba(10, 10, 20, 0.12);
+}
+
+html.dark .prose-space pre code {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
