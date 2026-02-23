@@ -26,14 +26,14 @@ The goal of this project is twofold:
 
 * **React 19**
 * **TypeScript**
-* **Vite** (modern build tool)
+* **Vite** 
 * **React Router** (routing)
 * **TailwindCSS v4** (UI + design system)
 
 ### Content Rendering
 
 * **React-Markdown**
-* **Remark-GFM** (GitHub flavored markdown)
+* **Remark-GFM** 
 * **DOMPurify** (sanitization against XSS)
 
 ### Tooling & Quality
@@ -76,4 +76,9 @@ Even though the site is static, security best practices are applied:
 
 
 
+---
+## 🧑‍💻 Author
 
+Developed by **Hamza Ouba**  
+
+---
