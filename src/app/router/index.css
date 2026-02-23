@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {
+  --text: rgba(255, 255, 255, 0.92);
+}
+
+/* Dark */
+html.dark body {
+  color: rgba(255, 255, 255, 0.92);
+  background:
+    radial-gradient(1200px 800px at 15% 10%, rgba(99, 102, 241, 0.28), transparent 60%),
+    radial-gradient(900px 700px at 80% 20%, rgba(34, 211, 238, 0.18), transparent 55%),
+    radial-gradient(1000px 800px at 40% 90%, rgba(168, 85, 247, 0.22), transparent 55%),
+    linear-gradient(180deg, #070914, #0b1024);
+  min-height: 100vh;
+}
+
+/* Light */
+html:not(.dark) body {
+  color: rgba(10, 10, 20, 0.92);
+  background:
+    radial-gradient(1200px 800px at 15% 10%, rgba(99, 102, 241, 0.18), transparent 60%),
+    radial-gradient(900px 700px at 80% 20%, rgba(34, 211, 238, 0.12), transparent 55%),
+    radial-gradient(1000px 800px at 40% 90%, rgba(168, 85, 247, 0.14), transparent 55%),
+    linear-gradient(180deg, #f6f7ff, #eef2ff);
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.35);
+  outline-offset: 3px;
+}
