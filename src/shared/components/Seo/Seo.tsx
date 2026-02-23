@@ -17,3 +17,5 @@ export function Seo({ title, description }: SeoProps) {
     </Helmet>
   );
 }
+
+
