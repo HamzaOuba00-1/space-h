@@ -35,17 +35,17 @@ export function ExerciseDetailsPage() {
   if (!exercise) {
     return (
       <main style={{ padding: "1rem", maxWidth: 900, margin: "0 auto" }}>
-        <Seo title="Hamza Space — Exercice introuvable" />
+        <Seo title="Hamza Space — Exercise introuvable" />
         <h1>Exercice introuvable</h1>
-        <Link to="/exercices">← Retour</Link>
+        <Link to="/exercises">← Retour</Link>
       </main>
     );
   }
 
   return (
     <main style={{ padding: "1rem", maxWidth: 900, margin: "0 auto" }}>
-      <Seo title={`Hamza Space — ${exercise.title}`} description={`Exercice (${exercise.difficulty})`} />
-      <Link to="/exercices">← Retour</Link>
+      <Seo title={`Hamza Space — ${exercise.title}`} description={`exercise (${exercise.difficulty})`} />
+      <Link to="/exercises">← Retour</Link>
       <h1>{exercise.title}</h1>
 
       <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
