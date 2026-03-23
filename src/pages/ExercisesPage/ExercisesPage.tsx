@@ -31,14 +31,23 @@ export function ExercisesPage() {
   }, [all, query, selectedTag]);
 
   return (
-    <div className="space-y-6">
-      <Seo title="space-H — Exercises" description="Filterable exercises + downloadable solutions." />
+    <div className="space-y-6 text-[rgb(var(--fg))]">
+      <Seo
+        title="space-H — Exercises"
+        description="Filterable exercises + downloadable solutions."
+      />
 
+      {/* ================= HEADER ================= */}
       <div className="space-y-2">
-        <h1 className="text-3xl font-semibold tracking-tight">Exercises</h1>
-        <p className="text-white/65">Practice makes perfect</p>
+        <h1 className="text-3xl font-semibold tracking-tight">
+          Exercises
+        </h1>
+        <p className="text-[rgb(var(--fg-muted))]">
+          Practice makes perfect
+        </p>
       </div>
 
+      {/* ================= FILTER ================= */}
       <FilterBar
         query={query}
         onQueryChange={setQuery}
@@ -48,15 +57,15 @@ export function ExercisesPage() {
         placeholder="Search..."
       />
 
+      {/* ================= GRID ================= */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((e) => (
           <Link key={e.slug} to={`/exercises/${e.slug}`} className="block">
             <Card className="h-full">
               <div className="flex h-full flex-col gap-3">
-                <div className="flex items-center gap-2">
-                </div>
-
-                <h2 className="text-lg font-semibold">{e.title}</h2>
+                <h2 className="text-lg font-semibold">
+                  {e.title}
+                </h2>
 
                 <div className="flex flex-wrap gap-2">
                   {e.tags.map((t) => (
@@ -64,15 +73,18 @@ export function ExercisesPage() {
                   ))}
                 </div>
 
-                <div className="mt-auto text-xs text-white/50">Open →</div>
+                <div className="mt-auto text-xs text-[rgb(var(--fg))/0.5]">
+                  Open →
+                </div>
               </div>
             </Card>
           </Link>
         ))}
       </div>
 
+      {/* ================= EMPTY STATE ================= */}
       {filtered.length === 0 ? (
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-white/70">
+        <div className="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--bg-soft))] p-6 text-sm text-[rgb(var(--fg-muted))]">
           No exercises match your search.
         </div>
       ) : null}

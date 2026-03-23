@@ -8,7 +8,10 @@ import { loadMarkdownByPath } from "@/shared/lib/markdownCatalog";
 
 export function ExerciseDetailsPage() {
   const { slug } = useParams();
-  const exercise = useMemo(() => (slug ? getExerciseBySlug(slug) : undefined), [slug]);
+  const exercise = useMemo(
+    () => (slug ? getExerciseBySlug(slug) : undefined),
+    [slug]
+  );
 
   const [statement, setStatement] = useState<string>("");
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -18,58 +21,100 @@ export function ExerciseDetailsPage() {
 
     async function run() {
       if (!exercise) return;
+
       try {
-        const text = await loadMarkdownByPath(exercisesMarkdownCatalog, exercise.statementMarkdownPath);
+        const text = await loadMarkdownByPath(
+          exercisesMarkdownCatalog,
+          exercise.statementMarkdownPath
+        );
+
         if (!cancelled) setStatement(text);
       } catch (e) {
-        if (!cancelled) setLoadError(e instanceof Error ? e.message : "Markdown load failed");
+        if (!cancelled)
+          setLoadError(e instanceof Error ? e.message : "Markdown load failed");
       }
     }
 
     run();
+
     return () => {
       cancelled = true;
     };
   }, [exercise]);
 
+  /* ================= NOT FOUND ================= */
   if (!exercise) {
     return (
-      <main style={{ padding: "1rem", maxWidth: 900, margin: "0 auto" }}>
+      <main className="mx-auto max-w-3xl px-4 py-10 text-[rgb(var(--fg))]">
         <Seo title="Hamza Space — Exercise introuvable" />
-        <h1>Exercice introuvable</h1>
-        <Link to="/exercises">← Retour</Link>
+
+        <h1 className="text-2xl font-semibold">Exercice introuvable</h1>
+
+        <Link
+          to="/exercises"
+          className="mt-4 inline-block text-sm text-[rgb(var(--fg-muted))] hover:underline"
+        >
+          ← Retour
+        </Link>
       </main>
     );
   }
 
+  /* ================= PAGE ================= */
   return (
-    <main style={{ padding: "1rem", maxWidth: 900, margin: "0 auto" }}>
-      <Seo title={`Hamza Space — ${exercise.title}`} description={`exercise (${exercise.difficulty})`} />
-      <Link to="/exercises">← Retour</Link>
-      <h1>{exercise.title}</h1>
+    <main className="mx-auto max-w-3xl px-4 py-10 text-[rgb(var(--fg))]">
+      <Seo
+        title={`Hamza Space — ${exercise.title}`}
+        description={`exercise (${exercise.difficulty})`}
+      />
 
-      <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", flexWrap: "wrap" }}>
+      {/* Back */}
+      <Link
+        to="/exercises"
+        className="inline-block text-sm text-[rgb(var(--fg-muted))] hover:underline"
+      >
+        ← Retour
+      </Link>
 
-        <small>{exercise.tags.join(", ")}</small>
+      {/* Header */}
+      <div className="mt-4 space-y-2">
+        <h1 className="text-3xl font-semibold tracking-tight">
+          {exercise.title}
+        </h1>
+
+        <div className="text-sm text-[rgb(var(--fg-muted))]">
+          {exercise.tags.join(", ")}
+        </div>
       </div>
 
-      <hr style={{ margin: "1rem 0" }} />
+      {/* Divider */}
+      <div className="my-6 h-px bg-[rgb(var(--border))]" />
 
-      {loadError ? <p>Impossible de charger l’énoncé: {loadError}</p> : <Markdown markdown={statement} />}
+      {/* Statement */}
+      {loadError ? (
+        <p className="text-sm text-[rgb(var(--fg-muted))]">
+          Impossible de charger l’énoncé: {loadError}
+        </p>
+      ) : (
+        <Markdown markdown={statement} />
+      )}
 
-      <hr style={{ margin: "1rem 0" }} />
+      {/* Divider */}
+      <div className="my-6 h-px bg-[rgb(var(--border))]" />
 
+      {/* Download button */}
       <a
         href={exercise.solutionDownloadPath}
         download
         rel="noopener noreferrer"
-        style={{
-          display: "inline-block",
-          padding: "0.6rem 1rem",
-          borderRadius: 12,
-          border: "1px solid #ddd",
-          textDecoration: "none",
-        }}
+        className="
+          inline-block rounded-xl border px-4 py-2 text-sm font-medium
+          border-[rgb(var(--border))]
+          bg-[rgb(var(--bg-soft))]
+          text-[rgb(var(--fg))]
+          transition-colors
+          hover:bg-[rgb(var(--bg-hover))]
+        "
       >
         Télécharger la solution (zip)
       </a>
