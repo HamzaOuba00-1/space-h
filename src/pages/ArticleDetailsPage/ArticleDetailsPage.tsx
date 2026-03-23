@@ -8,7 +8,10 @@ import { loadMarkdownByPath } from "@/shared/lib/markdownCatalog";
 
 export function ArticleDetailsPage() {
   const { slug } = useParams();
-  const article = useMemo(() => (slug ? getArticleBySlug(slug) : undefined), [slug]);
+  const article = useMemo(
+    () => (slug ? getArticleBySlug(slug) : undefined),
+    [slug]
+  );
 
   const [markdown, setMarkdown] = useState<string>("");
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -18,41 +21,80 @@ export function ArticleDetailsPage() {
 
     async function run() {
       if (!article) return;
+
       try {
-        const text = await loadMarkdownByPath(articlesMarkdownCatalog, article.markdownPath);
+        const text = await loadMarkdownByPath(
+          articlesMarkdownCatalog,
+          article.markdownPath
+        );
+
         if (!cancelled) setMarkdown(text);
       } catch (e) {
-        if (!cancelled) setLoadError(e instanceof Error ? e.message : "Markdown load failed");
+        if (!cancelled)
+          setLoadError(e instanceof Error ? e.message : "Markdown load failed");
       }
     }
 
     run();
+
     return () => {
       cancelled = true;
     };
   }, [article]);
 
+  /* ================= NOT FOUND ================= */
   if (!article) {
     return (
-      <main style={{ padding: "1rem", maxWidth: 900, margin: "0 auto" }}>
+      <main className="mx-auto max-w-3xl px-4 py-10 text-[rgb(var(--fg))]">
         <Seo title="Hamza Space — Article introuvable" />
-        <h1>Article introuvable</h1>
-        <Link to="/articles">← Retour</Link>
+
+        <h1 className="text-2xl font-semibold">Article introuvable</h1>
+
+        <Link
+          to="/articles"
+          className="mt-4 inline-block text-sm text-[rgb(var(--fg-muted))] hover:underline"
+        >
+          ← Retour
+        </Link>
       </main>
     );
   }
 
+  /* ================= PAGE ================= */
   return (
-    <main style={{ padding: "1rem", maxWidth: 900, margin: "0 auto" }}>
-      <Seo title={`Hamza Space — ${article.title}`} description={article.summary} />
-      <Link to="/articles">← Retour</Link>
-      <h1>{article.title}</h1>
-      <small>{article.publishedAt} • {article.tags.join(", ")}</small>
+    <main className="mx-auto max-w-3xl px-4 py-10 text-[rgb(var(--fg))]">
+      <Seo
+        title={`Hamza Space — ${article.title}`}
+        description={article.summary}
+      />
 
-      <hr style={{ margin: "1rem 0" }} />
+      {/* Back link */}
+      <Link
+        to="/articles"
+        className="inline-block text-sm text-[rgb(var(--fg-muted))] hover:underline"
+      >
+        ← Retour
+      </Link>
 
+      {/* Header */}
+      <div className="mt-4 space-y-2">
+        <h1 className="text-3xl font-semibold tracking-tight">
+          {article.title}
+        </h1>
+
+        <div className="text-sm text-[rgb(var(--fg-muted))]">
+          {article.publishedAt} • {article.tags.join(", ")}
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className="my-6 h-px bg-[rgb(var(--border))]" />
+
+      {/* Content */}
       {loadError ? (
-        <p>Impossible de charger le contenu: {loadError}</p>
+        <p className="text-sm text-[rgb(var(--fg-muted))]">
+          Impossible de charger le contenu: {loadError}
+        </p>
       ) : (
         <Markdown markdown={markdown} />
       )}

@@ -31,14 +31,23 @@ export function ArticlesPage() {
   }, [all, query, selectedTag]);
 
   return (
-    <div className="space-y-6">
-      <Seo title="space-H — Articles" description="Articles and notes about web development." />
+    <div className="space-y-6 text-[rgb(var(--fg))]">
+      <Seo
+        title="space-H — Articles"
+        description="Articles and notes about web development."
+      />
 
+      {/* ================= HEADER ================= */}
       <div className="space-y-2">
-        <h1 className="text-3xl font-semibold tracking-tight">Articles</h1>
-        <p className="text-black/65 dark:text-white/65">What I learn, I share.</p>
+        <h1 className="text-3xl font-semibold tracking-tight">
+          Articles
+        </h1>
+        <p className="text-[rgb(var(--fg-muted))]">
+          What I learn, I share.
+        </p>
       </div>
 
+      {/* ================= FILTER ================= */}
       <FilterBar
         query={query}
         onQueryChange={setQuery}
@@ -48,6 +57,7 @@ export function ArticlesPage() {
         placeholder="Search..."
       />
 
+      {/* ================= GRID ================= */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((a) => (
           <Link key={a.slug} to={`/articles/${a.slug}`} className="block">
@@ -60,11 +70,16 @@ export function ArticlesPage() {
                 </div>
 
                 <div className="space-y-1">
-                  <h2 className="text-lg font-semibold">{a.title}</h2>
-                  <p className="text-sm text-black/65 dark:text-white/65">{a.summary}</p>
+                  <h2 className="text-lg font-semibold">
+                    {a.title}
+                  </h2>
+
+                  <p className="text-sm text-[rgb(var(--fg-muted))]">
+                    {a.summary}
+                  </p>
                 </div>
 
-                <div className="mt-auto text-xs text-black/50 dark:text-white/50">
+                <div className="mt-auto text-xs text-[rgb(var(--fg))/0.5]">
                   {a.publishedAt}
                 </div>
               </div>
@@ -73,8 +88,9 @@ export function ArticlesPage() {
         ))}
       </div>
 
+      {/* ================= EMPTY STATE ================= */}
       {filtered.length === 0 ? (
-        <div className="rounded-2xl border border-black/10 bg-white/60 p-6 text-sm text-black/70 dark:border-white/10 dark:bg-white/5 dark:text-white/70">
+        <div className="rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--bg-soft))] p-6 text-sm text-[rgb(var(--fg-muted))]">
           No articles match your search.
         </div>
       ) : null}
