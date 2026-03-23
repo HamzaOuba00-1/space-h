@@ -17,6 +17,7 @@ export function FilterBar({
 }: FilterBarProps) {
   return (
     <div className="space-y-3">
+      {/* ================= INPUT ================= */}
       <input
         type="text"
         value={query}
@@ -24,41 +25,46 @@ export function FilterBar({
         placeholder={placeholder}
         className="
           w-full rounded-2xl
-          border border-black/10
-          bg-white/60
+          border border-[rgb(var(--border))]
+          bg-[rgb(var(--bg-soft))]
           px-4 py-3
-          text-sm text-black/85
-          placeholder:text-black/40
+          text-sm text-[rgb(var(--fg))]
+          placeholder:text-[rgb(var(--fg-muted))]
           outline-none
           transition-colors
-          focus:border-black/25
-          focus:bg-white/60
-          focus:ring-0
-          dark:border-white/10
-          dark:bg-white/5
-          dark:text-white/85
-          dark:placeholder:text-white/40
-          dark:focus:border-white/25
-          dark:focus:bg-white/5
+          focus:border-[rgb(var(--fg))/0.25]
+          focus:bg-[rgb(var(--bg-soft))]
         "
       />
 
+      {/* ================= TAGS ================= */}
       <div className="flex flex-wrap gap-2">
-        {/* All button */}
+        {/* All */}
         <button
           type="button"
           onClick={() => onTagChange(null)}
           className={[
             "rounded-full border px-3 py-1 text-xs transition-colors",
+
             selectedTag === null
-              ? "border-black/20 bg-black/5 text-black dark:border-white/20 dark:bg-white/12 dark:text-white"
-              : "border-black/10 bg-white/40 text-black/70 hover:bg-white/70 hover:text-black dark:border-white/10 dark:bg-white/5 dark:text-white/70 dark:hover:bg-white/8 dark:hover:text-white",
+              ? [
+                  "border-[rgb(var(--fg))/0.2]",
+                  "bg-[rgb(var(--bg-hover))]",
+                  "text-[rgb(var(--fg))]",
+                ].join(" ")
+              : [
+                  "border-[rgb(var(--border))]",
+                  "bg-[rgb(var(--bg-soft))]",
+                  "text-[rgb(var(--fg-muted))]",
+                  "hover:bg-[rgb(var(--bg-hover))]",
+                  "hover:text-[rgb(var(--fg))]",
+                ].join(" "),
           ].join(" ")}
         >
           All
         </button>
 
-        {/* Tag buttons */}
+        {/* Tags */}
         {tags.map((t) => (
           <button
             key={t}
@@ -66,9 +72,20 @@ export function FilterBar({
             onClick={() => onTagChange(selectedTag === t ? null : t)}
             className={[
               "rounded-full border px-3 py-1 text-xs transition-colors",
+
               selectedTag === t
-                ? "border-black/20 bg-black/5 text-black dark:border-white/20 dark:bg-white/12 dark:text-white"
-                : "border-black/10 bg-white/40 text-black/70 hover:bg-white/70 hover:text-black dark:border-white/10 dark:bg-white/5 dark:text-white/70 dark:hover:bg-white/8 dark:hover:text-white",
+                ? [
+                    "border-[rgb(var(--fg))/0.2]",
+                    "bg-[rgb(var(--bg-hover))]",
+                    "text-[rgb(var(--fg))]",
+                  ].join(" ")
+                : [
+                    "border-[rgb(var(--border))]",
+                    "bg-[rgb(var(--bg-soft))]",
+                    "text-[rgb(var(--fg-muted))]",
+                    "hover:bg-[rgb(var(--bg-hover))]",
+                    "hover:text-[rgb(var(--fg))]",
+                  ].join(" "),
             ].join(" ")}
           >
             {t}
