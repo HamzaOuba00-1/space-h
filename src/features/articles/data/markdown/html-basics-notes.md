@@ -1,25 +1,21 @@
-Voici le même contenu réécrit **sans tableaux**, uniquement en Markdown avec des listes structurées, prêt pour un fichier `.md`.
-
----
-
 # HTML Fundamentals — Practical Guide
 
-HTML (**HyperText Markup Language**) est le langage standard utilisé pour structurer le contenu sur le web.
-Il définit la **signification** et l’**organisation** de l’information, pas son apparence ni son comportement.
+HTML (**HyperText Markup Language**) is the standard language used to structure content on the web.
+It defines the **meaning** and **organization** of information, not its appearance or behavior.
 
-* Le style est géré par **CSS**
-* L’interactivité est gérée par **JavaScript**
-* HTML fournit la base sémantique sur laquelle les deux reposent
+* Styling is handled by **CSS**
+* Interactivity is handled by **JavaScript**
+* HTML provides the semantic foundation on which both rely
 
-HTML utilise des **éléments (tags)** pour décrire les différentes parties d’une page : titres, texte, images, navigation, formulaires, etc.
+HTML uses **elements (tags)** to describe different parts of a page: headings, text, images, navigation, forms, etc.
 
 ---
 
-## 1. Structure de Base d’un Document HTML
+## 1. Basic Structure of an HTML Document
 
-Chaque page HTML suit une structure standard appelée **boilerplate**.
+Every HTML page follows a standard structure called a **boilerplate**.
 
-### Exemple — `index.html`
+### Example — `index.html`
 
 ```html
 <!DOCTYPE html>
@@ -35,51 +31,51 @@ Chaque page HTML suit une structure standard appelée **boilerplate**.
 </html>
 ```
 
-### Explication
+### Explanation
 
 * `<!DOCTYPE html>`
-  Déclare le document comme étant en HTML5
+  Declares the document as HTML5
 
 * `<html>`
-  Élément racine contenant toute la page
+  Root element containing the entire page
 
 * `<head>`
-  Contient les métadonnées (titre, encodage, configuration)
+  Contains metadata (title, encoding, configuration)
 
 * `<body>`
-  Contient le contenu visible affiché dans le navigateur
+  Contains the visible content displayed in the browser
 
 * `index.html`
-  Nom de fichier généralement utilisé comme page d’accueil
+  Common filename used as the homepage
 
 ---
 
-## 2. Qu’est-ce qu’un Élément HTML ?
+## 2. What is an HTML Element?
 
-Un élément HTML est composé de :
+An HTML element consists of:
 
-* Une balise ouvrante
-* Du contenu
-* Une balise fermante
+* An opening tag
+* Content
+* A closing tag
 
 ```html
 <p>This is a paragraph</p>
 ```
 
-* `<p>` → balise ouvrante
-* `This is a paragraph` → contenu
-* `</p>` → balise fermante
+* `<p>` → opening tag
+* `This is a paragraph` → content
+* `</p>` → closing tag
 
-Certains éléments sont auto-fermants, comme :
+Some elements are self-closing, such as:
 
 * `<img>`
 * `<br>`
 
 ---
 
-## 3. Éléments Essentiels de Texte
+## 3. Essential Text Elements
 
-### Titres (Headings)
+### Headings
 
 ```html
 <h1>Main Title</h1>
@@ -87,13 +83,13 @@ Certains éléments sont auto-fermants, comme :
 <h3>Section</h3>
 ```
 
-* Créent une hiérarchie de contenu
-* Essentiels pour l’accessibilité
-* Importants pour le SEO
+* Create a content hierarchy
+* Essential for accessibility
+* Important for SEO
 
 ---
 
-### Paragraphe
+### Paragraph
 
 ```html
 <p>This is a paragraph.</p>
@@ -101,7 +97,7 @@ Certains éléments sont auto-fermants, comme :
 
 ---
 
-### Mise en Forme du Texte
+### Text Formatting
 
 ```html
 <strong>Bold</strong>
@@ -109,39 +105,39 @@ Certains éléments sont auto-fermants, comme :
 <small>Small text</small>
 ```
 
-* `<strong>` → importance forte (pas seulement visuel)
-* `<em>` → emphase
-* `<small>` → texte secondaire
+* `<strong>` → strong importance (not just visual)
+* `<em>` → emphasis
+* `<small>` → secondary text
 
-Privilier les balises **sémantiques** plutôt que purement visuelles.
+Prefer **semantic tags** over purely visual ones.
 
 ---
 
-### Saut de Ligne et Ligne Horizontale
+### Line Break and Horizontal Rule
 
 ```html
 <br>
 <hr>
 ```
 
-* `<br>` → saut de ligne
-* `<hr>` → séparation thématique
+* `<br>` → line break
+* `<hr>` → thematic separation
 
 ---
 
-### Indice et Exposant
+### Subscript and Superscript
 
 ```html
 H<sub>2</sub>O
 2<sup>4</sup> = 16
 ```
 
-* `<sub>` → indice
-* `<sup>` → exposant
+* `<sub>` → subscript
+* `<sup>` → superscript
 
 ---
 
-### Préservation des Espaces
+### Preserving Whitespace
 
 ```html
 <pre>
@@ -150,26 +146,26 @@ as written.
 </pre>
 ```
 
-* Conserve les espaces et retours à la ligne
+* Preserves spaces and line breaks
 
 ---
 
-## 4. Liens et Images
+## 4. Links and Images
 
-### Lien Hypertexte
+### Hyperlink
 
 ```html
 <a href="https://example.com">Visit Website</a>
 ```
 
-Ouvrir dans un nouvel onglet :
+Open in a new tab:
 
 ```html
 <a href="https://example.com" target="_blank" rel="noopener">
 ```
 
-* `target="_blank"` → nouvel onglet
-* `rel="noopener"` → sécurité
+* `target="_blank"` → new tab
+* `rel="noopener"` → security
 
 ---
 
@@ -179,15 +175,15 @@ Ouvrir dans un nouvel onglet :
 <img src="image.png" alt="Profile picture" width="200">
 ```
 
-* `src` → chemin de l’image
-* `alt` → description (obligatoire pour l’accessibilité)
-* `width` → largeur
+* `src` → image path
+* `alt` → description (required for accessibility)
+* `width` → width
 
 ---
 
-## 5. Éléments de Mise en Page Sémantiques
+## 5. Semantic Layout Elements
 
-Les éléments sémantiques décrivent le **rôle** du contenu.
+Semantic elements describe the **role** of content.
 
 ```html
 <header>Website Header</header>
@@ -203,27 +199,27 @@ Les éléments sémantiques décrivent le **rôle** du contenu.
 <footer>Footer</footer>
 ```
 
-* `<header>` → en-tête
-* `<main>` → contenu principal
-* `<section>` → regroupement thématique
-* `<article>` → contenu autonome
-* `<aside>` → contenu secondaire
-* `<footer>` → pied de page
+* `<header>` → header
+* `<main>` → main content
+* `<section>` → thematic grouping
+* `<article>` → independent content
+* `<aside>` → secondary content
+* `<footer>` → footer
 
-Améliorent :
+They improve:
 
-* La maintenabilité
-* L’accessibilité
-* Le SEO
+* Maintainability
+* Accessibility
+* SEO
 
 ---
 
-## 6. Conteneurs : `div` vs `span`
+## 6. Containers: `div` vs `span`
 
 ### `<div>`
 
-* Élément de type bloc
-* Utilisé pour structurer des sections
+* Block-level element
+* Used to structure sections
 
 ```html
 <div>Main block</div>
@@ -231,21 +227,21 @@ Améliorent :
 
 ### `<span>`
 
-* Élément inline
-* Utilisé pour cibler ou styliser du texte
+* Inline element
+* Used to target or style text
 
 ```html
 <span>Inline text</span>
 ```
 
-Utiliser d’abord un élément sémantique adapté.
-Employer `<div>` seulement lorsqu’aucune alternative sémantique n’existe.
+Use a semantic element first.
+Use `<div>` only when no semantic alternative exists.
 
 ---
 
-## 7. Listes
+## 7. Lists
 
-### Liste Non Ordonnée
+### Unordered List
 
 ```html
 <ul>
@@ -254,12 +250,12 @@ Employer `<div>` seulement lorsqu’aucune alternative sémantique n’existe.
 </ul>
 ```
 
-* `<ul>` → liste à puces
-* `<li>` → élément de liste
+* `<ul>` → bullet list
+* `<li>` → list item
 
 ---
 
-### Liste Ordonnée
+### Ordered List
 
 ```html
 <ol>
@@ -268,19 +264,19 @@ Employer `<div>` seulement lorsqu’aucune alternative sémantique n’existe.
 </ol>
 ```
 
-* `<ol>` → liste numérotée
+* `<ol>` → numbered list
 
-Les listes sont essentielles pour :
+Lists are essential for:
 
-* Menus de navigation
-* Fonctionnalités
-* Contenu structuré
+* Navigation menus
+* Features
+* Structured content
 
 ---
 
 ## 8. Tables
 
-Les tables affichent des données relationnelles structurées.
+Tables display structured relational data.
 
 ```html
 <table>
@@ -296,19 +292,19 @@ Les tables affichent des données relationnelles structurées.
 </table>
 ```
 
-Signification des balises :
+Tag meanings:
 
-* `<table>` → conteneur principal
-* `<tr>` → ligne
-* `<th>` → cellule d’en-tête
-* `<td>` → cellule de données
-* `<caption>` → description de la table
+* `<table>` → main container
+* `<tr>` → row
+* `<th>` → header cell
+* `<td>` → data cell
+* `<caption>` → table description
 
 ---
 
-## 9. Formulaires — Collecter des Données
+## 9. Forms — Collecting Data
 
-Les formulaires permettent d’envoyer des données à un serveur.
+Forms allow sending data to a server.
 
 ```html
 <form action="/submit" method="post">
@@ -334,18 +330,18 @@ Les formulaires permettent d’envoyer des données à un serveur.
 </form>
 ```
 
-Éléments courants :
+Common elements:
 
-* `<input>` → champ simple
-* `<textarea>` → zone de texte
-* `<select>` → liste déroulante
-* `<button>` → bouton d’action
+* `<input>` → basic field
+* `<textarea>` → text area
+* `<select>` → dropdown
+* `<button>` → action button
 
 ---
 
-## 10. Attributs `class` et `id`
+## 10. `class` and `id` Attributes
 
-Utilisés pour cibler des éléments en CSS ou JavaScript.
+Used to target elements in CSS or JavaScript.
 
 ```html
 <div id="header"></div>
@@ -354,15 +350,15 @@ Utilisés pour cibler des éléments en CSS ou JavaScript.
 
 * `id`
 
-  * Doit être unique dans la page
+  * Must be unique in the page
 
 * `class`
 
-  * Peut être réutilisée plusieurs fois
+  * Can be reused multiple times
 
 ---
 
-## 11. Intégration de Contenu Externe
+## 11. Embedding External Content
 
 ### Iframe
 
@@ -372,13 +368,13 @@ Utilisés pour cibler des éléments en CSS ou JavaScript.
 
 ---
 
-### Vidéo
+### Video
 
 ```html
 <video src="video.mp4" controls width="400"></video>
 ```
 
-Attributs courants :
+Common attributes:
 
 * `controls`
 * `autoplay`
@@ -387,7 +383,7 @@ Attributs courants :
 
 ---
 
-## Exemple Final — Page Web Minimale
+## Final Example — Minimal Web Page
 
 ```html
 <!DOCTYPE html>
@@ -426,18 +422,18 @@ Attributs courants :
 
 ---
 
-## Concept Fondamental à Retenir
+## Key Concept to Remember
 
-HTML ne concerne pas la présentation.
-Il décrit la structure et la signification du contenu.
+HTML is not about presentation.
+It describes the structure and meaning of content.
 
-* Les titres définissent la hiérarchie
-* Les sections organisent les idées
-* Les articles représentent du contenu autonome
-* Les formulaires capturent les données utilisateur
+* Headings define hierarchy
+* Sections organize ideas
+* Articles represent independent content
+* Forms capture user data
 
-CSS améliore la présentation.
-JavaScript ajoute le comportement.
-HTML fournit le modèle structurel qui rend l’ensemble cohérent et fiable.
+CSS improves presentation.
+JavaScript adds behavior.
+HTML provides the structural model that makes everything coherent and reliable.
 
-Comprendre cette séparation est essentiel pour travailler proprement avec les frameworks modernes et construire des interfaces maintenables à grande échelle.
+Understanding this separation is essential for working effectively with modern frameworks and building maintainable interfaces at scale.

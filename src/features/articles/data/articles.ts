@@ -17,4 +17,12 @@ export const articles: Article[] = [
     publishedAt: "2026-02-27",
     markdownPath: "./markdown/css-basics-notes.md",
   },
+  {
+    slug: "javascript-basics-notes",
+    title: "JavaScript",
+    summary: "Notes essentielles pour comprendre les bases du JavaScript.",
+    tags: ["javascript"],
+    publishedAt: "2026-03-05",
+    markdownPath: "./markdown/javascript-basics-notes.md",
+  }
 ];

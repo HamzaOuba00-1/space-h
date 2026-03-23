@@ -1,25 +1,25 @@
 # CSS Fundamentals — Practical Guide
 
-CSS (**Cascading Style Sheets**) est le langage standard utilisé pour styliser et mettre en page les pages web.
-Il contrôle la présentation visuelle du contenu HTML.
+CSS (**Cascading Style Sheets**) is the standard language used to style and layout web pages.
+It controls the visual presentation of HTML content.
 
-* HTML définit la structure
-* JavaScript définit le comportement
-* CSS définit la présentation
+* HTML defines the structure
+* JavaScript defines the behavior
+* CSS defines the presentation
 
-CSS fonctionne en sélectionnant des éléments HTML et en leur appliquant des règles de style.
+CSS works by selecting HTML elements and applying style rules to them.
 
 ---
 
-## 1. Syntaxe de Base en CSS
+## 1. Basic CSS Syntax
 
-Une règle CSS est composée :
+A CSS rule consists of:
 
-* d’un **sélecteur**
-* d’un ou plusieurs **déclarations**
-* chaque déclaration contient une **propriété** et une **valeur**
+* a **selector**
+* one or more **declarations**
+* each declaration contains a **property** and a **value**
 
-### Exemple — `style.css`
+### Example — `style.css`
 
 ```css
 h1 {
@@ -28,29 +28,29 @@ h1 {
 }
 ```
 
-### Décomposition
+### Breakdown
 
 * `h1`
-  Sélecteur (cible les éléments `<h1>`)
+  Selector (targets `<h1>` elements)
 
 * `color`
-  Propriété (ce que l’on modifie)
+  Property (what is being modified)
 
 * `blue`
-  Valeur (comment on le modifie)
+  Value (how it is modified)
 
 * `{}`
-  Contient les déclarations
+  Contains the declarations
 
-Chaque déclaration se termine par un point-virgule `;`.
+Each declaration ends with a semicolon `;`.
 
 ---
 
-## 2. Manières d’Ajouter du CSS
+## 2. Ways to Add CSS
 
-### CSS Externe (Recommandé)
+### External CSS (Recommended)
 
-Méthode recommandée pour les projets réels.
+Recommended method for real projects.
 
 ```html
 <head>
@@ -58,18 +58,18 @@ Méthode recommandée pour les projets réels.
 </head>
 ```
 
-Avantages :
+Advantages:
 
-* Séparation des responsabilités
-* Réutilisable sur plusieurs pages
-* Maintenance plus simple
-* Architecture plus propre
+* Separation of concerns
+* Reusable across multiple pages
+* Easier maintenance
+* Cleaner architecture
 
 ---
 
-### CSS Interne
+### Internal CSS
 
-Utilisé pour styliser une seule page.
+Used to style a single page.
 
 ```html
 <head>
@@ -83,47 +83,47 @@ Utilisé pour styliser une seule page.
 
 ---
 
-### CSS Inline (À éviter en production)
+### Inline CSS (Avoid in production)
 
 ```html
 <p style="color:red;">Hello</p>
 ```
 
-Le style inline nuit à :
+Inline styling negatively impacts:
 
-* La scalabilité
-* La maintenabilité
-* La lisibilité du code
+* Scalability
+* Maintainability
+* Code readability
 
 ---
 
-## 3. Sélecteurs CSS
+## 3. CSS Selectors
 
-Les sélecteurs déterminent quels éléments sont stylisés.
+Selectors determine which elements are styled.
 
-Types courants :
+Common types:
 
-* Sélecteur d’élément
-  Exemple : `p`
-  Cible tous les `<p>`
+* Element selector
+  Example: `p`
+  Targets all `<p>` elements
 
-* Sélecteur d’ID
-  Exemple : `#title`
-  Cible un élément unique
+* ID selector
+  Example: `#title`
+  Targets a unique element
 
-* Sélecteur de classe
-  Exemple : `.card`
-  Cible plusieurs éléments
+* Class selector
+  Example: `.card`
+  Targets multiple elements
 
-* Sélecteur universel
-  Exemple : `*`
-  Cible tous les éléments
+* Universal selector
+  Example: `*`
+  Targets all elements
 
-* Sélecteur groupé
-  Exemple : `div, p`
-  Cible plusieurs types d’éléments
+* Group selector
+  Example: `div, p`
+  Targets multiple element types
 
-Exemple :
+Example:
 
 ```css
 .card {
@@ -133,9 +133,9 @@ Exemple :
 
 ---
 
-## 4. Couleurs en CSS
+## 4. Colors in CSS
 
-Exemples :
+Examples:
 
 ```css
 color: rgb(255, 0, 0);
@@ -143,25 +143,25 @@ color: #ff0000;
 color: rgba(255, 0, 0, 0.5);
 ```
 
-Formats courants :
+Common formats:
 
-* Couleurs nommées (`red`, `blue`, etc.)
+* Named colors (`red`, `blue`, etc.)
 * RGB
 * HEX
-* RGBA (avec transparence)
+* RGBA (with transparency)
 
 ---
 
-## 5. Le Box Model
+## 5. The Box Model
 
-Chaque élément HTML est rendu comme une boîte rectangulaire composée de :
+Every HTML element is rendered as a rectangular box composed of:
 
-1. Content (contenu)
-2. Padding (espacement interne)
-3. Border (bordure)
-4. Margin (espacement externe)
+1. Content
+2. Padding (inner spacing)
+3. Border
+4. Margin (outer spacing)
 
-### Exemple
+### Example
 
 ```css
 div {
@@ -172,15 +172,15 @@ div {
 }
 ```
 
-Maîtriser le box model est essentiel pour contrôler la mise en page.
+Mastering the box model is essential for controlling layout.
 
 ---
 
-## 6. La Propriété `display`
+## 6. The `display` Property
 
-Contrôle le comportement d’un élément dans le flux du document.
+Controls how an element behaves in the document flow.
 
-Valeurs courantes :
+Common values:
 
 ```css
 display: block;
@@ -189,7 +189,7 @@ display: inline-block;
 display: none;
 ```
 
-Exemple :
+Example:
 
 ```css
 span {
@@ -199,15 +199,15 @@ span {
 
 ---
 
-## 7. Unités CSS
+## 7. CSS Units
 
-### Unités Absolues
+### Absolute Units
 
 * `px`
 * `cm`
 * `pt`
 
-### Unités Relatives (Recommandées)
+### Relative Units (Recommended)
 
 * `%`
 * `em`
@@ -215,15 +215,15 @@ span {
 * `vw`
 * `vh`
 
-Les unités relatives s’adaptent mieux au responsive design.
+Relative units adapt better to responsive design.
 
 ---
 
-## 8. Positionnement
+## 8. Positioning
 
-Permet de contrôler le placement d’un élément.
+Controls how an element is placed.
 
-Valeurs possibles :
+Possible values:
 
 ```css
 position: static;
@@ -233,7 +233,7 @@ position: fixed;
 position: sticky;
 ```
 
-Exemple :
+Example:
 
 ```css
 .box {
@@ -243,26 +243,26 @@ Exemple :
 }
 ```
 
-Le positionnement modifie la manière dont l’élément interagit avec le flux normal du document.
+Positioning changes how the element interacts with the normal document flow.
 
 ---
 
-## 9. Gestion des Couches — `z-index`
+## 9. Layer Management — `z-index`
 
-Détermine l’ordre d’empilement des éléments.
+Determines the stacking order of elements.
 
 ```css
 z-index: 10;
 ```
 
-* Valeur plus élevée → au-dessus
-* Valeur plus faible → en dessous
+* Higher value → on top
+* Lower value → below
 
 ---
 
 ## 10. Backgrounds
 
-Exemple :
+Example:
 
 ```css
 body {
@@ -271,7 +271,7 @@ body {
 }
 ```
 
-Propriétés fréquentes :
+Common properties:
 
 * `background-color`
 * `background-image`
@@ -281,11 +281,11 @@ Propriétés fréquentes :
 
 ---
 
-## 11. Flexbox — Système de Layout Moderne
+## 11. Flexbox — Modern Layout System
 
-Flexbox simplifie la création de layouts responsives.
+Flexbox simplifies creating responsive layouts.
 
-### Créer un conteneur Flex
+### Create a Flex Container
 
 ```css
 .container {
@@ -304,7 +304,7 @@ flex-direction: column;
 
 ---
 
-### Alignement
+### Alignment
 
 ```css
 justify-content: center;
@@ -312,13 +312,13 @@ align-items: center;
 flex-wrap: wrap;
 ```
 
-Flexbox est préféré aux floats pour les layouts modernes.
+Flexbox is preferred over floats for modern layouts.
 
 ---
 
 ## 12. Media Queries — Responsive Design
 
-Permettent d’adapter le design selon la taille de l’écran.
+Allow adapting design based on screen size.
 
 ```css
 @media (max-width: 480px) {
@@ -328,13 +328,13 @@ Permettent d’adapter le design selon la taille de l’écran.
 }
 ```
 
-Essentiel pour le développement mobile-first.
+Essential for mobile-first development.
 
 ---
 
 ## 13. Transitions
 
-Ajoutent des changements visuels fluides.
+Add smooth visual changes.
 
 ```css
 button {
@@ -346,7 +346,7 @@ button {
 
 ## 14. Transform
 
-Permet de déplacer, faire pivoter ou redimensionner un élément.
+Allows moving, rotating, or resizing an element.
 
 ```css
 transform: translate(50px, 0);
@@ -358,9 +358,9 @@ transform: scale(1.5);
 
 ## 15. Animations
 
-Permettent des animations sans JavaScript.
+Enable animations without JavaScript.
 
-### Étape 1 — Définir les Keyframes
+### Step 1 — Define Keyframes
 
 ```css
 @keyframes example {
@@ -371,7 +371,7 @@ Permettent des animations sans JavaScript.
 
 ---
 
-### Étape 2 — Appliquer l’Animation
+### Step 2 — Apply the Animation
 
 ```css
 div {
@@ -381,7 +381,7 @@ div {
 
 ---
 
-## Exemple Final — Mini Page Stylisée
+## Final Example — Styled Mini Page
 
 ### HTML
 
@@ -431,18 +431,18 @@ body {
 
 ---
 
-## Concept Fondamental à Retenir
+## Key Concept to Remember
 
-CSS ne définit pas la structure.
-Il définit l’apparence.
+CSS does not define structure.
+It defines appearance.
 
-* Sélectionner des éléments
-* Appliquer des styles
-* Contrôler la mise en page
-* Adapter aux différentes tailles d’écran
+* Select elements
+* Apply styles
+* Control layout
+* Adapt to different screen sizes
 
-HTML définit la signification.
-CSS définit l’apparence.
-JavaScript définit le comportement.
+HTML defines meaning.
+CSS defines appearance.
+JavaScript defines behavior.
 
-Comprendre cette séparation est essentiel pour construire des applications web évolutives et maintenables.
+Understanding this separation is essential for building scalable and maintainable web applications.
