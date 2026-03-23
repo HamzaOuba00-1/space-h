@@ -1,34 +1,93 @@
 @import "tailwindcss";
 
-:root {
-  --text: rgba(255, 255, 255, 0.92);
+/* ================= TOKENS ================= */
+@layer base {
+  :root {
+    /* ================= BASE ================= */
+    --bg: 250 251 255;
+    --bg-soft: 255 255 255 / 0.75;
+    --bg-hover: 0 0 0 / 0.04;
+
+    /* ================= TEXT ================= */
+    --fg: 20 20 35;
+    --fg-muted: 20 20 35 / 0.6;
+
+    /* ================= BORDERS ================= */
+    --border: 20 20 35 / 0.08;
+
+    /* ================= CARD ================= */
+    --card: 255 255 255 / 0.7;
+    --card-hover: 255 255 255 / 0.9;
+
+    /* ================= GRADIENTS ================= */
+    --grad-indigo: 99 102 241 / 0.22;
+    --grad-cyan: 34 211 238 / 0.16;
+    --grad-purple: 168 85 247 / 0.18;
+
+    /* ================= BASE LAYER ================= */
+    --bg-base: #f4f6ff;
+  }
+
+  .dark {
+    /* ================= BASE ================= */
+    --bg: 7 9 20;
+    --bg-soft: 255 255 255 / 0.05;
+    --bg-hover: 255 255 255 / 0.10;
+
+    /* ================= TEXT ================= */
+    --fg: 255 255 255;
+    --fg-muted: 255 255 255 / 0.65;
+
+    /* ================= BORDERS ================= */
+    --border: 255 255 255 / 0.1;
+
+    /* ================= CARD ================= */
+    --card: 255 255 255 / 0.05;
+    --card-hover: 255 255 255 / 0.10;
+
+    /* ================= GRADIENTS ================= */
+    --grad-indigo: 99 102 241 / 0.25;
+    --grad-cyan: 34 211 238 / 0.16;
+    --grad-purple: 168 85 247 / 0.20;
+
+    /* ================= BASE LAYER ================= */
+    --bg-base: #0b1024;
+  }
 }
 
-/* Dark */
-html.dark body {
-  color: rgba(255, 255, 255, 0.92);
-  background:
-    radial-gradient(1200px 800px at 15% 10%, rgba(99, 102, 241, 0.28), transparent 60%),
-    radial-gradient(900px 700px at 80% 20%, rgba(34, 211, 238, 0.18), transparent 55%),
-    radial-gradient(1000px 800px at 40% 90%, rgba(168, 85, 247, 0.22), transparent 55%),
-    linear-gradient(180deg, #070914, #0b1024);
-  min-height: 100vh;
-}
-
-/* Light */
-html:not(.dark) body {
-  color: rgba(10, 10, 20, 0.92);
-  background:
-    radial-gradient(1200px 800px at 15% 10%, rgba(99, 102, 241, 0.18), transparent 60%),
-    radial-gradient(900px 700px at 80% 20%, rgba(34, 211, 238, 0.12), transparent 55%),
-    radial-gradient(1000px 800px at 40% 90%, rgba(168, 85, 247, 0.14), transparent 55%),
-    linear-gradient(180deg, #f6f7ff, #eef2ff);
-  min-height: 100vh;
-}
+/* ================= BODY ================= */
 
 body {
   margin: 0;
+  min-height: 100vh;
+
+  color: rgb(var(--fg));
+
+  background:
+    radial-gradient(1200px 800px at 15% 10%, rgba(var(--grad-indigo)), transparent 60%),
+    radial-gradient(900px 700px at 80% 20%, rgba(var(--grad-cyan)), transparent 55%),
+    radial-gradient(1000px 800px at 40% 90%, rgba(var(--grad-purple)), transparent 55%),
+    linear-gradient(180deg, rgb(var(--bg)), var(--bg-base));
+
+  /* subtle premium effect */
+  background-attachment: fixed;
 }
+
+/* ================= LIGHT GLOW  ================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(600px 400px at 50% 0%, rgba(255, 186, 252, 0.6), transparent 70%);
+
+  opacity: 0.35;
+}
+
+/* ================= ACCESSIBILITY ================= */
 
 :focus-visible {
   outline: 2px solid rgba(99, 102, 241, 0.35);
