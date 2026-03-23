@@ -6,6 +6,7 @@ import { IoCloseSharp } from "react-icons/io5";
 
 import { Container } from "@/shared/layout/Container";
 import { Logo } from "@/shared/components/Logo/Logo";
+import { ThemeToggle } from "@/shared/components/ThemeToggle";
 
 type NavItem = {
   label: string;
@@ -46,21 +47,24 @@ export function Navbar() {
 
   return (
     <>
-      {/* ===== Desktop Navbar ===== */}
+      {/* ================= DESKTOP ================= */}
       <motion.header
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="fixed top-0 w-full z-50 backdrop-blur-lg bg-black/40 border-b border-white/5"
+        className="
+          fixed top-0 w-full z-50
+          backdrop-blur-lg
+          bg-[rgb(var(--bg-soft))]
+          border-b border-[rgb(var(--border))]
+        "
       >
         <Container>
           <div className="h-16 hidden md:flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center gap-3">
-              <Logo />
-            </div>
+            <Logo />
 
-            <ul className="flex items-center gap-8 text-gray-300">
+            {/* Nav */}
+            <ul className="flex items-center gap-8">
               {items.map((item) => (
                 <li key={item.to} className="relative group">
                   <NavLink
@@ -69,7 +73,9 @@ export function Navbar() {
                     className={({ isActive }) =>
                       [
                         "transition-colors",
-                        isActive ? "text-white" : "text-gray-300 group-hover:text-white",
+                        isActive
+                          ? "text-[rgb(var(--fg))]"
+                          : "text-[rgb(var(--fg-muted))] group-hover:text-[rgb(var(--fg))]",
                       ].join(" ")
                     }
                   >
@@ -77,31 +83,41 @@ export function Navbar() {
                   </NavLink>
 
                   <span
-                    className={[
-                      "absolute -bottom-1 left-0 h-[2px] bg-blue-400 transition-all duration-300",
-                      "w-0 group-hover:w-full",
-                    ].join(" ")}
+                    className="
+                      absolute -bottom-1 left-0 h-[2px]
+                      bg-indigo-400
+                      transition-all duration-300
+                      w-0 group-hover:w-full
+                    "
                   />
                 </li>
               ))}
             </ul>
 
+            <div className="flex items-center gap-4">
+              <ThemeToggle />
+            </div>
           </div>
         </Container>
       </motion.header>
 
-      {/* ===== Mobile Navbar ===== */}
-      <header className="fixed top-0 w-full z-50 md:hidden backdrop-blur-lg bg-black/50 border-b border-white/5">
+      {/* ================= MOBILE ================= */}
+      <header
+        className="
+          fixed top-0 w-full z-50 md:hidden
+          backdrop-blur-lg
+          bg-[rgb(var(--bg-soft))]
+          border-b border-[rgb(var(--border))]
+        "
+      >
         <Container>
           <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center gap-3">
-              <Logo />
-            </div>
+            <Logo />
 
             <button
               type="button"
               onClick={() => setMenuOpen((v) => !v)}
-              className="text-white"
+              className="text-[rgb(var(--fg))]"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
@@ -115,9 +131,9 @@ export function Navbar() {
         <AnimatePresence>
           {menuOpen && (
             <>
+              {/* overlay */}
               <motion.button
                 type="button"
-                aria-label="Close menu overlay"
                 className="fixed inset-0 z-40 bg-black/40"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -125,10 +141,14 @@ export function Navbar() {
                 onClick={() => setMenuOpen(false)}
               />
 
+              {/* menu */}
               <motion.nav
                 id="mobile-nav"
-                aria-label="Mobile"
-                className="relative z-50 bg-[#0e0c1e] px-6 py-8 space-y-6 border-t border-white/5"
+                className="
+                  relative z-50 px-6 py-8 space-y-6
+                  border-t border-[rgb(var(--border))]
+                  bg-[rgb(var(--bg))]
+                "
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
@@ -143,7 +163,9 @@ export function Navbar() {
                     className={({ isActive }) =>
                       [
                         "block text-lg transition",
-                        isActive ? "text-white" : "text-gray-300 hover:text-purple-400",
+                        isActive
+                          ? "text-[rgb(var(--fg))]"
+                          : "text-[rgb(var(--fg-muted))] hover:text-[rgb(var(--fg))]",
                       ].join(" ")
                     }
                   >
@@ -151,14 +173,16 @@ export function Navbar() {
                   </NavLink>
                 ))}
 
-                
+                <div className="pt-4">
+                  <ThemeToggle />
+                </div>
               </motion.nav>
             </>
           )}
         </AnimatePresence>
       </header>
 
-      {/* Spacer pour éviter que le contenu passe sous la navbar fixed */}
+      {/* Spacer */}
       <div className="h-16" />
     </>
   );
