@@ -1,36 +1,55 @@
-import type { PropsWithChildren } from "react";
-import { useEffect, useMemo, useState } from "react";
-import {
-  ThemeContext,
-  THEME_STORAGE_KEY,
-  type Theme,
-  type ThemeContextValue,
-  getInitialTheme,
-} from "@/app/providers/theme-context";
+import { useEffect, useMemo, useState, type PropsWithChildren } from "react";
+import { ThemeContext, type Theme } from "./theme-context";
 
-function applyThemeToRoot(theme: Theme) {
-  const root = document.documentElement;
-  if (theme === "dark") root.classList.add("dark");
-  else root.classList.remove("dark");
+const STORAGE_KEY = "theme";
+
+function getSystemTheme(): "light" | "dark" {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 }
 
 export function ThemeProvider({ children }: PropsWithChildren) {
   const [theme, setTheme] = useState<Theme>(() => {
-    // Important: avoid SSR issues + make sure we read once
-    return getInitialTheme(THEME_STORAGE_KEY);
+    const stored = localStorage.getItem(STORAGE_KEY) as Theme | null;
+    return stored ?? "system";
   });
 
-  useEffect(() => {
-    applyThemeToRoot(theme);
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  const resolvedTheme = useMemo(() => {
+    return theme === "system" ? getSystemTheme() : theme;
   }, [theme]);
 
-  const value = useMemo<ThemeContextValue>(
-    () => ({
-      theme,
-      toggleTheme: () => setTheme((t) => (t === "dark" ? "light" : "dark")),
-    }),
-    [theme]
+  useEffect(() => {
+    const root = document.documentElement;
+
+    if (resolvedTheme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+  }, [resolvedTheme]);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, theme);
+  }, [theme]);
+
+  useEffect(() => {
+    if (theme !== "system") return;
+
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const handler = () => {
+      const root = document.documentElement;
+      if (media.matches) root.classList.add("dark");
+      else root.classList.remove("dark");
+    };
+
+    media.addEventListener("change", handler);
+    return () => media.removeEventListener("change", handler);
+  }, [theme]);
+
+  const value = useMemo(
+    () => ({ theme, resolvedTheme, setTheme }),
+    [theme, resolvedTheme]
   );
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
